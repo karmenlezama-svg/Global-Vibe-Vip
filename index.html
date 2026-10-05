@@ -34,8 +34,7 @@
             margin-bottom: 20px; 
         }
         
-        .card-label-dia { background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(56, 189, 248, 0.3); }
-        .card-label-noche { background-color: rgba(236, 72, 153, 0.15); color: #f472b6; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .card-label-vip { background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(56, 189, 248, 0.3); }
         .card-label-tips { background-color: rgba(203, 213, 225, 0.15); color: #e2e8f0; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(203, 213, 225, 0.4); }
         
         .card h3 { font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
@@ -115,18 +114,18 @@
                 <h3 style="margin-bottom: 4px;">¿Cuál es tu próximo destino?</h3>
                 <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">El agente diseñará un plan exclusivo para cualquier ciudad del mundo.</p>
                 <div class="search-box">
-                    <input type="text" id="destination-input" placeholder="Ej: Ibiza, Medellín, Cancún, Miami, Marruecos...">
+                    <input type="text" id="destination-input" placeholder="Ej: Ibiza, Medellín, Cancún, Miami, Punta Cana...">
                     <button onclick="askAgent()" class="btn-action">Buscar Plan VIP</button>
                 </div>
             </div>
 
-            <!-- Loader de carga -->
+            <!-- Loader de carga animado -->
             <div id="loading" class="loader-container hidden">
                 <div class="spinner"></div>
                 <p>El agente inteligente está consultando rutas globales...</p>
             </div>
 
-            <!-- Resultados Dinámicos -->
+            <!-- Resultados Unificados -->
             <div id="itinerary-results">
                 <div class="card" style="text-align: center; padding: 30px 20px;">
                     <h3 style="color: #38bdf8; font-size: 20px; margin-bottom: 8px;">¡Listo para explorar!</h3>
@@ -150,7 +149,7 @@
             </a>
         </section>
 
-        <!-- PESTAÑA 3: TIPS DE SEGURIDAD -->
+        <!-- PESTAÑA 3: TIPS -->
         <section id="supervivencia" class="tab-content">
             <div class="card">
                 <span class="card-label-tips">🛡️ REGLAS DE ORO DEL VIAJERO</span>
@@ -180,4 +179,8 @@
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
 
+            const btnAgente = document.getElementById('btn-agente');
+            const btnMapas = document.getElementById('btn-mapas');
+            const btnTips = document.getElementById('btn-supervivencia');

@@ -34,7 +34,8 @@
             margin-bottom: 20px; 
         }
         
-        .card-label-vip { background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .card-label-dia { background-color: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .card-label-noche { background-color: rgba(236, 72, 153, 0.15); color: #f472b6; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(236, 72, 153, 0.3); }
         .card-label-tips { background-color: rgba(203, 213, 225, 0.15); color: #e2e8f0; font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 9999px; display: inline-block; margin-bottom: 14px; border: 1px solid rgba(203, 213, 225, 0.4); }
         
         .card h3 { font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
@@ -92,7 +93,7 @@
         .btn-map-text p { font-size: 12px; color: #94a3b8; }
         .btn-map-arrow { background-color: #334155; color: #cbd5e1; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; font-size: 14px; }
 
-        nav { position: fixed; bottom: 0; left: 0; right: 0; background-color: #0b1329; border-top: 2px solid #1e293b; padding: 14px 24px; display: flex; justify-content: space-around; backdrop-filter: blur(15px); z-index: 100; }
+        nav { position: fixed; bottom: 0; left: 0; right: 0; background-color: #0b1329; border-top: 2px solid #1e293b; padding: 14px 24px; display: flex; justify-content: space-around; backdrop-filter: blur(15px); z-index: 100; box-shadow: 0 -10px 25px rgba(0,0,0,0.4); }
         nav button { background: none; border: none; color: #64748b; font-size: 12px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; }
         nav button.active-itinerario { color: #38bdf8; font-weight: 800; }
         nav button.active-mapas { color: #f472b6; font-weight: 800; }
@@ -114,7 +115,7 @@
                 <h3 style="margin-bottom: 4px;">¿Cuál es tu próximo destino?</h3>
                 <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">El agente diseñará un plan exclusivo para cualquier ciudad del mundo.</p>
                 <div class="search-box">
-                    <input type="text" id="destination-input" placeholder="Ej: Ibiza, Medellín, Cancún, Miami, Punta Cana...">
+                    <input type="text" id="destination-input" placeholder="Ej: Playa del Carmen, Ibiza, Cancún, Miami...">
                     <button onclick="askAgent()" class="btn-action">Buscar Plan VIP</button>
                 </div>
             </div>
@@ -122,14 +123,14 @@
             <!-- Loader de carga animado -->
             <div id="loading" class="loader-container hidden">
                 <div class="spinner"></div>
-                <p>El agente inteligente está consultando rutas globales...</p>
+                <p>El agente inteligente está estructurando tu ruta...</p>
             </div>
 
-            <!-- Resultados Unificados -->
+            <!-- Resultados -->
             <div id="itinerary-results">
                 <div class="card" style="text-align: center; padding: 30px 20px;">
                     <h3 style="color: #38bdf8; font-size: 20px; margin-bottom: 8px;">¡Listo para explorar!</h3>
-                    <p>Escribe arriba tu ciudad de destino para que la Inteligencia Artificial te arme el itinerario optimizado de descanso de día y rumba de noche de inmediato.</p>
+                    <p>Escribe arriba tu ciudad de destino para que el Agente VIP te arme el itinerario optimizado de descanso de día y rumba de noche de inmediato.</p>
                 </div>
             </div>
         </section>
@@ -177,10 +178,6 @@
     <script>
         let currentDestination = "";
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-
-            const btnAgente = document.getElementById('btn-agente');
-            const btnMapas = document.getElementById('btn-mapas');
-            const btnTips = document.getElementById('btn-supervivencia');
+        // BASE DE DATOS LOCAL EXCLUSIVA (100% FUNCIONAL Y PROTEGIDA CONTRA CAÍDAS DE RED)
+        const vipsDatabase = {
+            "playa del carmen": {
